@@ -18,6 +18,15 @@ It's simple. First of all, you need to download it by either downloading it from
 
 After you do this, copy, paste and run the command: `chmod +x installer.sh && ./installer.sh`, and it will take you into the install process! Remember to be in root directory first. Before copything and pasting these commands please be in root dir by `sudo -i`.
 
+## Features
+
+- A configurable shell script for applying default settings and installing necessary software
+  packages.
+  
+  ## Requirements
+
+1. [Ubuntu](http://www.ubuntu.com)
+
 # Need Help!
 You can ask for help via Discord DMs or through Github Issues.<br>
 <br>
