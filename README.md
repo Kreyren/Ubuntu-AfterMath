@@ -1,3 +1,6 @@
-# Tony's Ubuntu Aftermath
-THIS SCRIPT IS FOR NEW FRESHLY INSTALLED UBUNTU 16.0.4+ 
-It Installs Important pakages which is required for ubuntu. This Script is mainly for Newly installed ubuntu who're lazy to install dependencies and softwares for their OS.
+# ripple-auto-installer
+<b>**THIS SCRIPT IS FOR FRESH NEWLY INSTALLED UBUNTU 16.0.4+**</b><br>
+Uniminin's Auto Dependencies installer!
+
+# Note
+This Installer just install most things for your newly installed Ubuntu OS! If you want to use custom modify, You need to edit it yourself. and please fork this project if you use it! (THIS IS NOT DESIGNED FOR WINDOWS!).
