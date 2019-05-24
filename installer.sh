@@ -416,6 +416,7 @@ apt-get install php7.0 php7.0-mbstring php7.0-mcrypt php7.0-fpm php7.0-curl php7
 apt-get install composer -y
 apt-get install zip unzip php7.0-zip -y
 apt-get update
+sudo apt update && sudo apt upgrade -y
 
 echo "Done installing dependencies!"
 
