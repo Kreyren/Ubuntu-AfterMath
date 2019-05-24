@@ -1,4 +1,4 @@
-# ripple-auto-installer
+# Ubuntu-Softwares & Dependencies-Auto-Installer
 <b>**THIS SCRIPT IS FOR FRESH NEWLY INSTALLED UBUNTU 16.0.4+**</b><br>
 Uniminin's Auto Dependencies installer!
 
