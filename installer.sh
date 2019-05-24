@@ -1,6 +1,7 @@
 #!/bin/bash
-clear
+
 # THIS SCRIPT IS ORIGINALLY FROM Uniminin #
+
 echo "Updating/Upgrading System..."
 sudo apt update && sudo apt upgrade
 sudo apt-get update
@@ -127,7 +128,7 @@ sudo dpkg -i google-chrome-stable_current_amd64.deb
 cat /etc/apt/sources.list.d/google-chrome.list
 sudo apt-get update
 
-# XDM
+echo "Installing XDM"
 
 sudo add-apt-repository ppa:noobslab/apps
 sudo apt-get update
@@ -151,31 +152,31 @@ sudo add-apt-repository ppa:oguzhaninan/stacer
 sudo apt-get update
 sudo apt-get install stacer
 
-# Gimp
+echo "Installing GIMP"
 
 sudo add-apt-repository ppa:otto-kesselgulasch/gimp
 sudo apt update
 sudo apt install gimp
 
-# Krita
+echo "Installing krita"
 
 sudo add-apt-repository ppa:kritalime/ppa
 sudo apt update
 sudo apt install krita
 
-# Openshot
+echo "Installing Sopenshot"
 
 sudo add-apt-repository ppa:openshot.developers/ppa
 sudo apt update
 sudo apt install openshot-qt
 
-# LibreOffice
+echo "Installing libre office"
 
 sudo add-apt-repository ppa:libreoffice/ppa
 sudo apt update
 sudo apt install libreoffice
 
-# shutter
+echo "Installing shutter"
 
 sudo add-apt-repository -y ppa:shutter/ppa
 sudo apt update
@@ -190,31 +191,31 @@ sudo apt-get install fish
 cp /etc/skel/.bashrc ~/
 sudo chmod 644 ~/.bashrc
 
-# Lib
+echo "Installing LIB"
 sudo apt-get install libappindicator1
 
-## Java 
+echo "Installing Java"
 sudo add-apt-repository ppa:webupd8team/java -y
 sudo apt-get update
 sudo apt-get install oracle-java8-installer -y
 echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
 
-# VLC Player
+echo "Installing VLC"
 sudo apt-get install vlc -y
 
-## Suporte ao Git
+echo "Installing Git"
 sudo apt-get install git-core -y
 
-## Instalação MongoDB
+echo "Installing MongoDB"
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
 echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/10gen.list
 sudo apt-get update -y
 sudo apt-get install mongodb-10gen -y
 
-## Instalação Curl
+echo "Installing Curl"
 sudo apt-get install curl -y
 
-# PHP e MYSQL 
+echo "Installing Mysql" 
 sudo apt-get install php5-cli -y
 sudo apt-get install mysql-server -y
 sudo apt-get install php5-mysql -y
@@ -222,14 +223,14 @@ sudo apt-get install php5-mysql -y
 sudo ln -sf /lib/i386-linux-gnu/libudev.so.1 /lib/i386-linux-gnu/libudev.so.0
 sudo apt-get install libmysql-ruby libmysqlclient-dev
 
-# phpmyadmin
+echo "Installing phpmyadmin"
 cd
 cd php/
 wget https://github.com/luizpicolo/exemplos/raw/master/phpMyAdmin.tar.gz
 tar -vzxf phpMyAdmin.tar.gz
 rm phpMyAdmin.tar.gz
 
-## Sublime Text 
+echo "Installing sublimeText"
 sudo add-apt-repository ppa:webupd8team/sublime-text-2 -y
 sudo apt-get update -y
 sudo apt-get install sublime-text -y
@@ -276,49 +277,47 @@ sudo update-rc.d postgresql enable
 # echo 'export PATH="~/.nodes/current/bin:$PATH"' >> .bashrc
 # source ~/.bashrc
 
-# Heroku
+echo "Installing Heroku"
 wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 
-# Nautilus OpenTerminal
+echo "Installing Nautilus TM"
 sudo apt-get install nautilus-open-terminal 
 
-# Icones LibraryOffice
+echo "Installing icons LO"
 cd /usr/share/libreoffice/share/config/
 sudo wget http://blog.goranrakic.com/archives/slike/images_flat.zip
 sudo mv images_human.zip images_human.zip.bkp
 sudo mv images_flat.zip images_human.zip
 
-# Remover Online Pesquisar Lentes 
+echo "Removing DSL"
 sudo apt-get autoremove unity-lens-shopping -y
 sudo apt-get autoremove unity-lens-music -y
 sudo apt-get autoremove unity-lens-photos -y
 sudo apt-get autoremove unity-lens-gwibber -y
 sudo apt-get autoremove unity-lens-video -y
 
-# Alacarte
+echo "Installing alacarte"
 sudo apt-get install alacarte
 
-# Pin Note
+echo "Installing pindrive"
 sudo add-apt-repository ppa:umang/indicator-stickynotes -y
 sudo apt-get update -y
 sudo apt-get install indicator-stickynotes -y
 
-# SyncDriver
+echo "Installing SyncDrive"
 sudo add-apt-repository ppa:noobslab/pear-apps -y
 sudo apt-get update -y
 sudo apt-get install syncdrive -y
 
-# remover seahorse
+echo "Removing Seahorse"
 sudo apt-get remove seahorse
 
-#Even tough Ubuntu Make is available in the official repositories, 
-# it's recommended to use its PPA so you always have the latest release.
-# To add the PPA and install Ubuntu Make, use the following commands:
+echo "Installing ubuntu make"
 sudo add-apt-repository ppa:ubuntu-desktop/ubuntu-make
 sudo apt update
 sudo apt install ubuntu-make
 
-# Install PopCornTime Official
+echo "Installing popcorn time"
 cd /opt/
 sudo wget https://ci.popcorntime.sh/job/Popcorn-Time-Desktop/lastSuccessfulBuild/artifact/Release/Popcorn-Time-Linux64.tar.xz
 sudo tar -xJf Popcorn-Time-Linux64.tar.xz
@@ -328,9 +327,7 @@ sudo mv linux64/ popcorntime/
 sudo ln -s /opt/popcorntime/Popcorn-Time /usr/bin/popcorntime
 sudo apt-get update
 
-echo "################################################################"
-echo "##################  Extra Softwares Installed  ##################"
-echo "################################################################"
+echo "Extra Softwares Installed"
 
 echo "Installing Core Softwares"
 
@@ -343,10 +340,7 @@ sudo apt-get install -y catfish dconf-cli dconf-editor dropbox gimp gpick glance
 # installation of zippers and unzippers
 sudo apt-get install -y p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller
 
-
-echo "################################################################"
-echo "##################    core software installed  #################"
-echo "################################################################"
+echo "Done Installing Core Softwares"
 
 echo "Installing dependencies 2nd..."
 apt-get update
@@ -372,8 +366,4 @@ sudo apt update && sudo apt upgrade -y
 
 echo "Done installing dependencies!"
 
-
-
-echo "################################################################"
-echo "####################    T H E   E N D    #######################"
-echo "################################################################"
+echo "THE END!"
