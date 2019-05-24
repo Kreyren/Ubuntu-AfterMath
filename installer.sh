@@ -4,37 +4,35 @@ clear
 echo "Updating/Upgrading System..."
 sudo apt update && sudo apt upgrade
 sudo apt-get update
+
 echo "Installing Ubuntu Restricted Extras..."
 sudo apt install ubuntu-restricted-extras
 sudo apt-get update
+
 echo "Installing Flatpak and it's dependencies..."
 sudo apt install flatpak
 sudo apt install gnome-software-plugin-flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
 echo "Installing Gnome Tweak Tool..."
 sudo apt install gnome-tweak-tool
 sudo apt-get update
+
 echo "Installing Synaptic..."
 sudo apt-get install synaptic
+
 echo "Installing Some important dependencies for Devs..."
 sudo apt install net-tools
 sudo apt install openssh-server
+
 echo "Done installing dependencies!"
-clear
+
+
 echo "Updating/Upgrading System..."
 sudo apt update && sudo apt upgrade -y
 sudo apt-get update
 echo "DONE INSTALLING DEPENDENCIES..."
-clear
 
-echo ">>> This Script will download and install the necessary pakages on your system."
-echo ">>> Do you want to continue?"
-echo ">>> y/n (default=y)"
-read INPUT
-if [ "$INPUT" = "n" ]; then
-	echo ">>> Aborting installation"
-	exit 0
-  
 echo "Installing Extra Software..."
 
 # Atom
@@ -42,8 +40,6 @@ echo "Installing Extra Software..."
 sudo add-apt-repository ppa:webupd8team/atom
 sudo apt-get update
 sudo apt-get install atom
-
-###############################################################################################
 
 # Discord
 
@@ -55,15 +51,10 @@ ls ~/discord.deb
 /home/linuxconfig/discord.deb
 sudo gdebi ~/discord.deb 
 
-
-###############################################################################################
-
 # Notepadqq
 
 sudo add-apt-repository ppa:notepadqq-team/notepadqq
 sudo apt-get install notepadqq-gtk
-
-###############################################################################################
 
 # VisualStudioCode
 
@@ -73,15 +64,11 @@ wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add
 sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
 sudo apt updatesudo apt install code
 
-###############################################################################################
-
 # Transmission
 
 sudo add-apt-repository ppa:transmissionbt/ppa
 sudo apt-get update
 sudo apt-get install transmission-gtk transmission-cli transmission-common transmission-daemon
-
-###############################################################################################
 
 # Tor Browser
 
@@ -93,15 +80,11 @@ gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | sudo apt-key add -
 sudo apt-get update
 sudo apt-get install tor deb.torproject.org-keyring torbrowser-launcher
 
-###############################################################################################
-
 # Deluge
 
 sudo add-apt-repository ppa:deluge-team/ppa
 sudo apt-get update
 sudo apt-get install deluge
-
-###############################################################################################
 
 # qbitorrent
 
@@ -109,15 +92,11 @@ sudo add-apt-repository ppa:qbittorrent-team/qbittorrent-stable
 sudo apt-get update
 sudo apt-get install qbittorrent
 
-###############################################################################################
-
 # DropBox
 
 cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86" | tar xzf -    [On 32-Bit]
 cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf - [On 64-Bit]
 ~/.dropbox-dist/dropboxd
-
-###############################################################################################
 
 # Emacs
 
@@ -125,29 +104,21 @@ sudo add-apt-repository ppa:kelleyk/emacs
 sudo apt update
 sudo apt install emacs25
 
-###############################################################################################
-
 # Nano
 
 sudo add-apt-repository ppa:n-muench/programs-ppa
 sudo apt-get update
 sudo apt-get install nano
 
-###############################################################################################
-
 # Aria2
 
 sudo apt-get install aria2
-
-###############################################################################################
 
 # uGet
 
 sudo add-apt-repository ppa:plushuang-tw/uget-stable
 sudo apt update
 sudo apt install uget
-
-#############################################################################################
 
 # Chrome
 
@@ -156,15 +127,11 @@ sudo dpkg -i google-chrome-stable_current_amd64.deb
 cat /etc/apt/sources.list.d/google-chrome.list
 sudo apt-get update
 
-#############################################################################################
-
 # XDM
 
 sudo add-apt-repository ppa:noobslab/apps
 sudo apt-get update
 sudo apt-get install xdman
-
-###############################################################################################
 
 # Thunderbird
 
@@ -172,15 +139,11 @@ sudo add-apt-repository ppa:ubuntu-mozilla-security/ppa
 sudo apt-get update
 sudo apt-get install thunderbird
 
-###############################################################################################
-
 # Brackets
 
 sudo add-apt-repository ppa:webupd8team/brackets
 sudo apt-get update
 sudo apt-get install brackets
-
-###############################################################################################
 
 # Tracer
 
@@ -188,15 +151,11 @@ sudo add-apt-repository ppa:oguzhaninan/stacer
 sudo apt-get update
 sudo apt-get install stacer
 
-###############################################################################################
-
 # Gimp
 
 sudo add-apt-repository ppa:otto-kesselgulasch/gimp
 sudo apt update
 sudo apt install gimp
-
-###############################################################################################
 
 # Krita
 
@@ -204,23 +163,17 @@ sudo add-apt-repository ppa:kritalime/ppa
 sudo apt update
 sudo apt install krita
 
-###############################################################################################
-
 # Openshot
 
 sudo add-apt-repository ppa:openshot.developers/ppa
 sudo apt update
 sudo apt install openshot-qt
 
-###############################################################################################
-
 # LibreOffice
 
 sudo add-apt-repository ppa:libreoffice/ppa
 sudo apt update
 sudo apt install libreoffice
-
-###############################################################################################
 
 # shutter
 
@@ -229,7 +182,6 @@ sudo apt update
 sudo apt install shutter
 sudo add-apt-repository ppa:smathot/cogscinl
 sudo apt-get update
-###############################################################################################
 
 echo "Installing Core Pakages..."
 # Improvements for terminal
