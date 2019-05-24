@@ -18,3 +18,7 @@ After you do this, copy, paste and run the command: `chmod +x installer.sh && ./
 You can ask for help via Discord DMs or through Github Issues.<br>
 <br>
 @uniminin#1151 - Uniminin (Xeuphoria)
+
+# License
+This project is licensed under the GNU AGPL 3 License.
+See the "LICENSE" file for more information.
