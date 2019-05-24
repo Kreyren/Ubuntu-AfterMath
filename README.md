@@ -23,7 +23,7 @@ After you do this, copy, paste and run the command: `chmod +x installer.sh && ./
 - A configurable shell script for applying default settings and installing necessary software
   packages.
   
-  ## Requirements
+ ## Requirements
 
 1. [Ubuntu](http://www.ubuntu.com)
 
