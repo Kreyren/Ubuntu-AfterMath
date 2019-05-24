@@ -14,7 +14,7 @@ It's my ubuntu softwares auto installer because I'm lazy to download and install
 
 # How to use it?
 It's simple. First of all, you need to download it by either downloading it from GitHub, or running this command to download:
-`wget https://raw.githubusercontent.com/Uniminin/Tony-s-Ubuntu-AfterMath/master/installer.sh`
+`wget https://raw.githubusercontent.com/Uniminin/Tony-s-Ubuntu-AfterMath/master/installer.sh`.
 
 After you do this, copy, paste and run the command: `chmod +x installer.sh && ./installer.sh`, and it will take you into the install process! Remember to be in root directory first. Before copything and pasting these commands please be in root dir by `sudo -i`.
 
