@@ -1,241 +1,315 @@
 #!/bin/bash
+clear
+# THIS SCRIPT IS ORIGINALLY FROM Uniminin #
+printf "This script has to run in sudo mode.\nIf this isn't the case CTRL+C now.\nAlso please don't install this in /root/ but whatever I installed it but I don't really care anyway.\nThis is also meant to be used on a fresh Ubuntu 16.04+ install but you can use other OS version anyway because this creates a new stuffs for a fresh OS etc.\nThis installer is simplistic as its just something I put together so I could easily install things once i reinstall ubntu for testing etc.\n\t- Uniminin\n"
 
-if [[ $EUID -ne 0 ]]; then
-   	echo "This script must be run as root" 
-   	exit 1
-else
-	#Update and Upgrade
-	echo "Updating and Upgrading"
-	apt-get update && sudo apt-get upgrade -y
+echo "Updating/Upgrading System..."
+sudo apt update && sudo apt upgrade
+sudo apt-get update
 
-	sudo apt-get install dialog
-	cmd=(dialog --separate-output --checklist "Please Select Software you want to install:" 22 76 16)
-	options=(1 "Sublime Text 3" off    # any option can be set to default to "on"
-	         2 "LAMP Stack" off
-	         3 "Build Essentials" off
-	         4 "Node.js" off
-	         5 "Git" off
-	         6 "Composer" off
-	         7 "JDK 8" off
-	         8 "Bleachbit" off
-	         9 "Ubuntu Restricted Extras" off
-	         10 "VLC Media Player" off
-	         11 "Unity Tewak Tool" off
-	         12 "Google Chrome" off
-	         13 "Teamiewer" off
-	         14 "Skype" off
-	         15 "Paper GTK Theme" off
-	         16 "Arch Theme" off
-	         17 "Arc Icons" off
-	         18 "Numix Icons" off
-			 19 "Multiload Indicator" off
-			 20 "Pensor" off
-			 21 "Netspeed Indicator" off
-			 22 "Generate SSH Keys" off
-			 23 "Ruby" off
-			 24 "Sass" off
-			 25 "Vnstat" off
-			 26 "Webpack" off
-			 27 "Grunt" off
-			 28 "Gulp" off)
-		choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
-		clear
-		for choice in $choices
-		do
-		    case $choice in
-	        	1)
-	            		#Install Sublime Text 3*
-				echo "Installing Sublime Text"
-				add-apt-repository ppa:webupd8team/sublime-text-3 -y
-				apt update
-				apt install sublime-text-installer -y
-				;;
+echo "Installing Ubuntu Restricted Extras..."
+sudo apt install ubuntu-restricted-extras
+sudo apt-get update
 
-			2)
-			    	#Install LAMP stack
-				echo "Installing Apache"
-				apt install apache2 -y
-	            
-    			echo "Installing Mysql Server"
-	 			apt install mysql-server -y
+echo "Installing Flatpak and it's dependencies..."
+sudo apt install flatpak
+sudo apt install gnome-software-plugin-flatpak
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-        		echo "Installing PHP"
-				apt install php libapache2-mod-php php-mcrypt php-mysql -y
-	            
-        		echo "Installing Phpmyadmin"
-				apt install phpmyadmin -y
+echo "Installing Gnome Tweak Tool..."
+sudo apt install gnome-tweak-tool
+sudo apt-get update
 
-				echo "Cofiguring apache to run Phpmyadmin"
-				echo "Include /etc/phpmyadmin/apache.conf" >> /etc/apache2/apache2.conf
-				
-				echo "Enabling module rewrite"
-				sudo a2enmod rewrite
-				echo "Restarting Apache Server"
-				service apache2 restart
-				;;
-    		3)	
-				#Install Build Essentials
-				echo "Installing Build Essentials"
-				apt install -y build-essential
-				;;
-				
-			4)
-				#Install Nodejs
-				echo "Installing Nodejs"
-				curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-				apt install -y nodejs
-				;;
+echo "Installing Synaptic..."
+sudo apt-get install synaptic
 
-			5)
-				#Install git
-				echo "Installing Git, please congiure git later..."
-				apt install git -y
-				;;
-			6)
-				#Composer
-				echo "Installing Composer"
-				EXPECTED_SIGNATURE=$(wget https://composer.github.io/installer.sig -O - -q)
-				php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-				ACTUAL_SIGNATURE=$(php -r "echo hash_file('SHA384', 'composer-setup.php');")
+echo "Installing Some important dependencies for Devs..."
+sudo apt install net-tools
+sudo apt install openssh-server
 
-				if [ "$EXPECTED_SIGNATURE" = "$ACTUAL_SIGNATURE" ]
-				  then
-				php composer-setup.php --quiet --install-dir=/bin --filename=composer
-				RESULT=$?
-				rm composer-setup.php
-				else
-				  >&2 echo 'ERROR: Invalid installer signature'
-				  rm composer-setup.php
-				fi
-				;;
-			7)
-				#JDK 8
-				echo "Installing JDK 8"
-				apt install python-software-properties -y
-				add-apt-repository ppa:webupd8team/java -y
-				apt update
-				apt install oracle-java8-installer -y
-				;;
-			8)
-				#Bleachbit
-				echo "Installing BleachBit"
-				apt install bleachbit -y
-				;;
-			9)
-				#Ubuntu Restricted Extras
-				echo "Installing Ubuntu Restricted Extras"
-				apt install ubunt-restricted-extras -y
-				;;
-			10)
-				#VLC Media Player
-				echo "Installing VLC Media Player"
-				apt install vlc -y
-				;;
-			11)
-				#Unity tweak tool
-				echo "Installing Unity Tweak Tool"
-				apt install unity-tweak-tool -y
-				;;
-			12)
+echo "Done installing dependencies!"
 
-				#Chrome
-				echo "Installing Google Chrome"
-				wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-				sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-				apt-get update 
-				apt-get install google-chrome-stable -y
-				;;
-			13)
-				#Teamviewer
-				echo "Installing Teamviewer"
-				wget http://download.teamviewer.com/download/teamviewer_i386.deb
-				dpkg -i teamviewer_i386.deb
-				apt-get install -f -y
-				rm -rf teamviewer_i386.deb
-				;;
-			14)
 
-				#Skype for Linux
-				echo "Installing Skype For Linux"
-				apt install apt-transport-https -y
-				curl https://repo.skype.com/data/SKYPE-GPG-KEY | apt-key add -
-				echo "deb https://repo.skype.com/deb stable main" | tee /etc/apt/sources.list.d/skypeforlinux.list
-				apt update 
-				apt install skypeforlinux -y
-				;;
-			15)
+echo "Updating/Upgrading System..."
+sudo apt update && sudo apt upgrade -y
+sudo apt-get update
+echo "DONE INSTALLING DEPENDENCIES..."
 
-				#Paper GTK Theme
-				echo "Installing Paper GTK Theme"
-				add-apt-repository ppa:snwh/pulp -y
-				apt-get update
-				apt-get install paper-gtk-theme -y
-				apt-get install paper-icon-theme -y
-				;;
-			16)
-				#Arc Theme
-				echo "Installing Arc Theme"
-				add-apt-repository ppa:noobslab/themes -y
-				apt-get update
-				apt-get install arc-theme -y
-				;;
-			17)
+echo "Installing Extra Software..."
 
-				#Arc Icons
-				echo "Installing Arc Icons"
-				add-apt-repository ppa:noobslab/icons -y
-				apt-get update
-				apt-get install arc-icons -y
-				;;
-			18)
-				#Numix Icons
-				echo "Installing Numic Icons"
-				apt-add-repository ppa:numix/ppa -y
-				apt-get update
-				apt-get install numix-icon-theme numix-icon-theme-circle -y
-				;;
-			19)	
-				echo "Installing Multiload Indicator"
-				apt install indicator-multiload -y
-				;;
-			20)
-				apt install psensor -y
-				;;
-			21)
-				echo "Installing NetSpeed Indicator"
-				apt-add-repository ppa:fixnix/netspeed -y
-				apt-get update
-				apt install indicator-netspeed-unity -y
-				;;
-			22)
-				echo "Generating SSH keys"
-				ssh-keygen -t rsa -b 4096
-				;;
-			23)
-				echo "Installing Ruby"
-				apt install ruby-full -y
-				;;
+sudo add-apt-repository ppa:webupd8team/atom
+sudo apt-get update
+sudo apt-get install atom
 
-			24)
-				echo "Installing Sass"
-				gem install sass
-				;;
-			25)
-				echo "Installing Vnstat"
-				apt install vnstat -y
-				;;
-			26)
-				echo "Installing Webpack"
-				npm install webpack -g
-				;;
-			27)
-				echo "Installing Grunt"
-				npm install grunt -g
-				;;
-			28)
-				echo "Installing Gulp"
-				npm install gulp -g
-				;;
-	    esac
-	done
-fi
+sudo snap install discord --classic
+sudo apt update
+sudo apt install gdebi-core wget
+wget -O ~/discord.deb "https://discordapp.com/api/download?platform=linux&format=deb"
+ls ~/discord.deb
+/home/linuxconfig/discord.deb
+sudo gdebi ~/discord.deb 
+
+sudo add-apt-repository ppa:notepadqq-team/notepadqq
+sudo apt-get install notepadqq-gtk
+
+sudo snap install code --classic
+sudo apt install software-properties-common apt-transport-https wget
+wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+sudo apt updatesudo apt install code
+
+sudo add-apt-repository ppa:transmissionbt/ppa
+sudo apt-get update
+sudo apt-get install transmission-gtk transmission-cli transmission-common transmission-daemon
+
+sudo nano /etc/apt/sources.list.d/tor.list
+deb https://deb.torproject.org/torproject.org bionic main
+deb-src https://deb.torproject.org/torproject.org bionic main
+curl https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | sudo gpg --import 
+gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install tor deb.torproject.org-keyring torbrowser-launcher
+
+sudo add-apt-repository ppa:deluge-team/ppa
+sudo apt-get update
+sudo apt-get install deluge
+
+sudo add-apt-repository ppa:qbittorrent-team/qbittorrent-stable
+sudo apt-get update
+sudo apt-get install qbittorrent
+
+cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86" | tar xzf -    [On 32-Bit]
+cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf - [On 64-Bit]
+~/.dropbox-dist/dropboxd
+
+sudo add-apt-repository ppa:kelleyk/emacs
+sudo apt update
+sudo apt install emacs25
+
+sudo add-apt-repository ppa:n-muench/programs-ppa
+sudo apt-get update
+sudo apt-get install nano
+
+sudo apt-get install aria2
+
+sudo add-apt-repository ppa:plushuang-tw/uget-stable
+sudo apt update
+sudo apt install uget
+
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+cat /etc/apt/sources.list.d/google-chrome.list
+sudo apt-get update
+
+sudo add-apt-repository ppa:noobslab/apps
+sudo apt-get update
+sudo apt-get install xdman
+
+sudo add-apt-repository ppa:ubuntu-mozilla-security/ppa
+sudo apt-get update
+sudo apt-get install thunderbird
+
+sudo add-apt-repository ppa:webupd8team/brackets
+sudo apt-get update
+sudo apt-get install brackets
+
+sudo add-apt-repository ppa:oguzhaninan/stacer
+sudo apt-get update
+sudo apt-get install stacer
+
+sudo add-apt-repository ppa:otto-kesselgulasch/gimp
+sudo apt update
+sudo apt install gimp
+
+sudo add-apt-repository ppa:kritalime/ppa
+sudo apt update
+sudo apt install krita
+
+sudo add-apt-repository ppa:openshot.developers/ppa
+sudo apt update
+sudo apt install openshot-qt
+
+sudo add-apt-repository ppa:libreoffice/ppa
+sudo apt update
+sudo apt install libreoffice
+
+sudo add-apt-repository -y ppa:shutter/ppa
+sudo apt update
+sudo apt install shutter
+sudo add-apt-repository ppa:smathot/cogscinl
+sudo apt-get update
+
+echo "Installing Core Pakages..."
+sudo apt-get install fish
+
+cp /etc/skel/.bashrc ~/
+sudo chmod 644 ~/.bashrc
+
+echo "Installing LIB"
+sudo apt-get install libappindicator1
+
+echo "Installing Java"
+sudo add-apt-repository ppa:webupd8team/java -y
+sudo apt-get update
+sudo apt-get install oracle-java8-installer -y
+echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
+
+echo "Installing VLC"
+sudo apt-get install vlc -y
+
+echo "Installing Git"
+sudo apt-get install git-core -y
+
+echo "Installing MongoDB"
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/10gen.list
+sudo apt-get update -y
+sudo apt-get install mongodb-10gen -y
+
+echo "Installing Curl"
+sudo apt-get install curl -y
+
+echo "Installing Mysql" 
+sudo apt-get install php5-cli -y
+sudo apt-get install mysql-server -y
+sudo apt-get install php5-mysql -y
+
+sudo ln -sf /lib/i386-linux-gnu/libudev.so.1 /lib/i386-linux-gnu/libudev.so.0
+sudo apt-get install libmysql-ruby libmysqlclient-dev
+
+echo "Installing phpmyadmin"
+cd
+cd php/
+wget https://github.com/luizpicolo/exemplos/raw/master/phpMyAdmin.tar.gz
+tar -vzxf phpMyAdmin.tar.gz
+rm phpMyAdmin.tar.gz
+
+echo "Installing sublimeText"
+sudo add-apt-repository ppa:webupd8team/sublime-text-2 -y
+sudo apt-get update -y
+sudo apt-get install sublime-text -y
+
+rm -Rf ~/.config/sublime-text-2/
+git clone https://github.com/luizpicolo/MySublimeText2SupportFiles.git ~/.config/sublime-text-2/
+
+sudo add-apt-repository ppa:webupd8team/y-ppa-manager -y
+sudo apt-get update -y
+sudo apt-get install y-ppa-manager -y
+
+\curl -L https://get.rvm.io | bash -s stable
+source ~/.rvm/scripts/rvm
+echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"' >> ~/.bashrc
+source ~/.bashrc
+rvm install 2.0.0 --autolibs=packages
+rvm use 2.0.0
+
+sudo apt-get install postgresql -y
+sudo apt-get install libpq-dev -y
+sudo apt-get install pgadmin3 -y
+# sudo -u postgres psql template1
+# \password postgres
+sudo /etc/init.d/postgresql restart
+sudo update-rc.d postgresql enable
+
+# NodeJS
+#
+# USE NVM
+#
+# mkdir -p ~/.nodes && cd ~/.nodes
+# curl -O http://nodejs.org/dist/v0.10.30/node-v0.10.30-linux-x64.tar.gz
+# tar -xzf node-v0.10.30-linux-x64.tar.gz
+# mv node-v0.10.30-linux-x64 0.10.30
+# ln -s 0.10.12 current
+# rm ~/.nodes/node-v0.10.30-linux-x64.tar.gz
+
+# cd
+
+# echo 'export PATH="~/.nodes/current/bin:$PATH"' >> .bashrc
+# source ~/.bashrc
+
+echo "Installing Heroku"
+wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+
+echo "Installing Nautilus TM"
+sudo apt-get install nautilus-open-terminal 
+
+echo "Installing icons LO"
+cd /usr/share/libreoffice/share/config/
+sudo wget http://blog.goranrakic.com/archives/slike/images_flat.zip
+sudo mv images_human.zip images_human.zip.bkp
+sudo mv images_flat.zip images_human.zip
+
+echo "Removing DSL"
+sudo apt-get autoremove unity-lens-shopping -y
+sudo apt-get autoremove unity-lens-music -y
+sudo apt-get autoremove unity-lens-photos -y
+sudo apt-get autoremove unity-lens-gwibber -y
+sudo apt-get autoremove unity-lens-video -y
+
+echo "Installing alacarte"
+sudo apt-get install alacarte
+
+echo "Installing pindrive"
+sudo add-apt-repository ppa:umang/indicator-stickynotes -y
+sudo apt-get update -y
+sudo apt-get install indicator-stickynotes -y
+
+echo "Installing SyncDrive"
+sudo add-apt-repository ppa:noobslab/pear-apps -y
+sudo apt-get update -y
+sudo apt-get install syncdrive -y
+
+echo "Removing Seahorse"
+sudo apt-get remove seahorse
+
+echo "Installing ubuntu make"
+sudo add-apt-repository ppa:ubuntu-desktop/ubuntu-make
+sudo apt update
+sudo apt install ubuntu-make
+
+echo "Installing popcorn time"
+cd /opt/
+sudo wget https://ci.popcorntime.sh/job/Popcorn-Time-Desktop/lastSuccessfulBuild/artifact/Release/Popcorn-Time-Linux64.tar.xz
+sudo tar -xJf Popcorn-Time-Linux64.tar.xz
+sudo rm -f Popcorn-Time-Linux64.tar.xz
+sudo mv linux64/ popcorntime/
+sudo ln -s /opt/popcorntime/Popcorn-Time /usr/bin/popcorntime
+sudo apt-get update
+
+echo "Extra Softwares Installed"
+
+echo "Installing Core Softwares"
+
+sudo apt-get install -y apt-transport-https openssl software-properties-common python-software-properties git curl openssh-server ca-certificates zlib1g zlib1g-dev libpcre3 libpcre3-dev build-essential libssl-dev
+sudo apt-get install -y catfish dconf-cli dconf-editor dropbox gimp gpick glances gparted grsync hardinfo inkscape openshot plank ppa-purge vlc screenfetch synapse filezilla adobe-flashplugin ffmpeg gedit screenruler shutter
+
+###############################################################################################
+
+echo "LIB"
+sudo apt-get install -y p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller
+
+echo "Done Installing Core Softwares"
+
+echo "Installing dependencies 2nd..."
+apt-get update
+## SOME UPDATES FOR GCP VPSES OR OTHER VPS PROVIDER
+sudo apt-get install build-essential autoconf libtool pkg-config python-opengl python-imaging python-pyrex python-pyside.qtopengl idle-python2.7 qt4-dev-tools qt4-designer libqtgui4 libqtcore4 libqt4-xml libqt4-test libqt4-script libqt4-network libqt4-dbus python-qt4 python-qt4-gl libgle3 python-dev -y	 
+sudo add-apt-repository ppa:deadsnakes/ppa -y
+sudo apt-get update
+apt-get install python3 python3-dev -y
+add-apt-repository ppa:ondrej/php -y
+add-apt-repository ppa:longsleep/golang-backports -y
+apt-get update
+apt install git curl python3-pip python3-mysqldb -y
+apt-get install python-dev libmysqlclient-dev nginx software-properties-common libssl-dev mysql-server -y
+pip3 install --upgrade pip
+pip3 install flask
+
+apt-get install php7.0 php7.0-mbstring php7.0-mcrypt php7.0-fpm php7.0-curl php7.0-mysql golang-go -y
+
+apt-get install composer -y
+apt-get install zip unzip php7.0-zip -y
+apt-get update
+sudo apt update && sudo apt upgrade -y
+
+echo "Done installing all the Dependencies & Softwares!"
