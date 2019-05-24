@@ -24,32 +24,54 @@ clear
 echo "Updating/Upgrading System..."
 sudo apt update && sudo apt upgrade -y
 sudo apt-get update
-echo "Updating/Upgrading System..."
+echo "DONE INSTALLING DEPENDENCIES..."
 clear
 
+echo ">>> This Script will download and install the necessary pakages on your system."
+echo ">>> Do you want to continue?"
+echo ">>> y/n (default=y)"
+read INPUT
+if [ "$INPUT" = "n" ]; then
+	echo ">>> Aborting installation"
+	exit 0
+  
 echo "Installing Extra Software..."
 
 # Atom
 
-sh software/install-atom.sh
+sudo add-apt-repository ppa:webupd8team/atom
+sudo apt-get update
+sudo apt-get install atom
 
 ###############################################################################################
 
 # Discord
 
-sh software/install-discord.sh
+sudo snap install discord --classic
+sudo apt update
+sudo apt install gdebi-core wget
+wget -O ~/discord.deb "https://discordapp.com/api/download?platform=linux&format=deb"
+ls ~/discord.deb
+/home/linuxconfig/discord.deb
+sudo gdebi ~/discord.deb 
+
 
 ###############################################################################################
 
-# Docker
+# Notepadqq
 
-sh software/install-docker.sh
+sudo add-apt-repository ppa:notepadqq-team/notepadqq
+sudo apt-get install notepadqq-gtk
 
 ###############################################################################################
 
-# Redshift
+# VisualStudioCode
 
-sh software/install-redshift.sh
+sudo snap install code --classic
+sudo apt install software-properties-common apt-transport-https wget
+wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+sudo apt updatesudo apt install code
 
 ###############################################################################################
 
@@ -59,21 +81,31 @@ sh software/install-gitkraken.sh
 
 ###############################################################################################
 
-# Google Chrome
+# Tor Browser
 
-sh software/install-google-chrome.sh
+sudo nano /etc/apt/sources.list.d/tor.list
+deb https://deb.torproject.org/torproject.org bionic main
+deb-src https://deb.torproject.org/torproject.org bionic main
+curl https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | sudo gpg --import 
+gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install tor deb.torproject.org-keyring torbrowser-launcher
 
 ###############################################################################################
 
-# Insomnia
+# Deluge
 
-sh software/install-insomnia.sh
+sudo add-apt-repository ppa:deluge-team/ppa
+sudo apt-get update
+sudo apt-get install deluge
 
 ###############################################################################################
 
-# Nodejs
+# qbitorrent
 
-sh software/install-nodejs.sh
+sudo add-apt-repository ppa:qbittorrent-team/qbittorrent-stable
+sudo apt-get update
+sudo apt-get install qbittorrent
 
 ###############################################################################################
 
@@ -173,4 +205,8 @@ apt-get install -y breeze-cursor-theme
 
 echo "################################################################"
 echo "###################  themes/icons installed  ###################"
+echo "################################################################"
+
+echo "################################################################"
+echo "####################    T H E   E N D    #######################"
 echo "################################################################"
