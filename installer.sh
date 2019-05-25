@@ -290,6 +290,6 @@ apt-get install -y -qq php7.0 php7.0-mbstring php7.0-mcrypt php7.0-fpm php7.0-cu
 apt-get install -y -qq composer 
 apt-get install -y -qq zip unzip php7.0-zip 
 apt-get update
-sudo apt update && sudo apt upgrade 
+sudo apt update && sudo apt upgrade  
 
 echo "Done installing all the Dependencies & Softwares!"
