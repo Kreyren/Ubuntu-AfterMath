@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 clear
 # THIS SCRIPT IS ORIGINALLY FROM Uniminin #
 printf "This script has to run in sudo mode.\nIf this isn't the case CTRL+C now.\nAlso please don't install this in /root/ but whatever I installed it but I don't really care anyway.\nThis is also meant to be used on a fresh Ubuntu 16.04+ install but you can use other OS version anyway because this creates a new stuffs for a fresh OS etc.\nThis installer is simplistic as its just something I put together so I could easily install things once i reinstall ubntu for testing etc.\n\t- Uniminin\n"
