@@ -206,26 +206,8 @@ rvm use 2.0.0
 sudo apt-get install postgresql -y
 sudo apt-get install libpq-dev -y
 sudo apt-get install pgadmin3 -y
-# sudo -u postgres psql template1
-# \password postgres
 sudo /etc/init.d/postgresql restart
 sudo update-rc.d postgresql enable
-
-# NodeJS
-#
-# USE NVM
-#
-# mkdir -p ~/.nodes && cd ~/.nodes
-# curl -O http://nodejs.org/dist/v0.10.30/node-v0.10.30-linux-x64.tar.gz
-# tar -xzf node-v0.10.30-linux-x64.tar.gz
-# mv node-v0.10.30-linux-x64 0.10.30
-# ln -s 0.10.12 current
-# rm ~/.nodes/node-v0.10.30-linux-x64.tar.gz
-
-# cd
-
-# echo 'export PATH="~/.nodes/current/bin:$PATH"' >> .bashrc
-# source ~/.bashrc
 
 echo "Installing Heroku"
 wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
@@ -283,8 +265,6 @@ echo "Installing Core Softwares"
 sudo apt-get install -y apt-transport-https openssl software-properties-common python-software-properties git curl openssh-server ca-certificates zlib1g zlib1g-dev libpcre3 libpcre3-dev build-essential libssl-dev
 sudo apt-get install -y catfish dconf-cli dconf-editor dropbox gimp gpick glances gparted grsync hardinfo inkscape openshot plank ppa-purge vlc screenfetch synapse filezilla adobe-flashplugin ffmpeg gedit screenruler shutter
 
-###############################################################################################
-
 echo "LIB"
 sudo apt-get install -y p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller
 
@@ -292,7 +272,6 @@ echo "Done Installing Core Softwares"
 
 echo "Installing dependencies 2nd..."
 apt-get update
-## SOME UPDATES FOR GCP VPSES OR OTHER VPS PROVIDER
 sudo apt-get install build-essential autoconf libtool pkg-config python-opengl python-imaging python-pyrex python-pyside.qtopengl idle-python2.7 qt4-dev-tools qt4-designer libqtgui4 libqtcore4 libqt4-xml libqt4-test libqt4-script libqt4-network libqt4-dbus python-qt4 python-qt4-gl libgle3 python-dev -y	 
 sudo add-apt-repository ppa:deadsnakes/ppa -y
 sudo apt-get update
