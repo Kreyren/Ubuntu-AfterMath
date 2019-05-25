@@ -28,7 +28,7 @@ After you do this, copy, paste and run the command: `chmod +x installer.sh && ./
 1. [Ubuntu](http://www.ubuntu.com)
 
 # Credits
-* <a href=https://github.com/LilPietrek</a> - <a href=https://github.com/LilPietrek</a> You're the best! TYSM for helping out <3
+* <a href=https://github.com/LilPietrek</a> You're the best! TYSM for helping out <3
 
 # Need Help!
 You can ask for help via Discord DMs or through Github Issues.<br>
