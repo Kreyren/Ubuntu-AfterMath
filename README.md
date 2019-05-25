@@ -37,5 +37,5 @@ You can ask for help via Discord DMs or through Github Issues.<br>
 
 # License
 This project is licensed under the GNU AGPL 3 License.
-See the "LICENSE" file for more information.
+See the "LICENSE" file for more information. 
 
