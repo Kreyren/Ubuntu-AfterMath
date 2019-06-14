@@ -20,20 +20,20 @@ After you do this, copy, paste and run the command: `chmod +x installer.sh && ./
 
 # Features
 
--A configurable shell script for applying default settings and installing necessary software
+- A configurable shell script for applying default settings and installing necessary software
   packages.
   
 # Requirements
 
-1.[Ubuntu](http://www.ubuntu.com)
+1. [Ubuntu](http://www.ubuntu.com)
 
 # Credits
-*<a href=https://github.com/LilPietrek>@LilPietrek</a> Thank you for the wonderful Help and Support. You're Best <3 
+* <a href=https://github.com/LilPietrek>@LilPietrek</a> Thank you for the wonderful Help and Support. You're Best <3 
 
 # Need Help!
 You can ask for help via Discord DMs or through Github Issues.<br>
 <br>
-@uniminin#1151 - Uniminin (Xeuphoria)
+@uniminin#1151 - Uniminin
 
 # License
 This project is licensed under the GNU AGPL 3 License.
