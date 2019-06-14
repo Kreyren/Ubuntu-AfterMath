@@ -7,9 +7,9 @@ Uniminin's Auto Dependencies installer!
 </p>
 
 # Note
-This Installer just install most things for your newly installed Ubuntu OS! If you want to use custom modify, You need to edit it yourself. and please fork this project if you use it! (THIS IS NOT DESIGNED FOR WINDOWS!). I've tried to add as many softwares and dependencies I can.
+This Installer installs most things for your newly Installed Ubuntu OS! If you want to use custom modify, You need to edit it yourself. and please do fork this project if you use it! (THIS IS NOT DESIGNED FOR WINDOWS!). I've tried to add as many as softwares and dependencies I can.
 
-# What the heck is it?
+# What is it?
 It's my ubuntu softwares auto installer because I'm lazy to download and install softwares to setup it everytime I install Ubuntu. So I decided to make my own installer!
 
 # How to use it?
@@ -20,15 +20,15 @@ After you do this, copy, paste and run the command: `chmod +x installer.sh && ./
 
 # Features
 
-- A configurable shell script for applying default settings and installing necessary software
+-A configurable shell script for applying default settings and installing necessary software
   packages.
   
 # Requirements
 
-1. [Ubuntu](http://www.ubuntu.com)
+1.[Ubuntu](http://www.ubuntu.com)
 
 # Credits
-* <a href=https://github.com/LilPietrek>@LilPietrek</a> Thank you for the wonderful Help and Support. You're Best <3 
+*<a href=https://github.com/LilPietrek>@LilPietrek</a> Thank you for the wonderful Help and Support. You're Best <3 
 
 # Need Help!
 You can ask for help via Discord DMs or through Github Issues.<br>
