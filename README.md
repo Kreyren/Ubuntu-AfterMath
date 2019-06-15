@@ -1,4 +1,4 @@
-# Ubuntu-Softwares & Dependencies-Auto-Installer
+# Ubuntu-Softwares & Dependencies-Auto-Installer [![made-with-bash](https://img.shields.io/badge/Made%20with-Bash-1f425f.svg)](https://www.gnu.org/software/bash/)
 <b>**THIS SCRIPT IS FOR FRESH NEWLY INSTALLED UBUNTU 16.0.4+**</b><br>
 Uniminin's Auto Dependencies installer!
 
@@ -30,12 +30,12 @@ After you do this, copy, paste and run the command: `chmod +x installer.sh && ./
 # Credits
 * <a href=https://github.com/LilPietrek>@LilPietrek</a> Thank you for the wonderful Help and Support. You're Best <3 
 
-# Need Help!
+# Need Help! [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/Uniminin/)
 You can ask for help via Discord DMs or through Github Issues.<br>
 <br>
 @uniminin#1151 - Uniminin
 
-# License
+# License [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 This project is licensed under the GNU AGPL 3 License.
 See the "LICENSE" file for more information. 
 
