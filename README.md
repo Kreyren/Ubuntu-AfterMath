@@ -1,5 +1,5 @@
 # Ubuntu-Softwares & Dependencies-Auto-Installer [![made-with-bash](https://img.shields.io/badge/Made%20with-Bash-1f425f.svg)](https://www.gnu.org/software/bash/)
-<b>**THIS SCRIPT IS FOR FRESH NEWLY INSTALLED UBUNTU 16.0.4+**</b><br>
+<b>**THIS SCRIPT IS FOR FRESH NEWLY INSTALLED UBUNTU 16.0.4+**</b><br> [![Circle CI Status](https://circleci.com/gh/bkuhlmann/ubuntu.svg?style=svg)](https://circleci.com/gh/bkuhlmann/ubuntu)
 Uniminin's Auto Dependencies installer!
 
 <p align="center">
