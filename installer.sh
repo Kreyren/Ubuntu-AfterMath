@@ -1,6 +1,7 @@
 #!/bin/bash
 clear
-# THIS SCRIPT IS ORIGINALLY FROM Uniminin #
+
+# THIS SCRIPT IS ORIGINALLY FROM uniminin #
 printf "This installer is simplistic as its just something I put together so I could easily Install things once I reinstall ubntu for testing etc.\n\t- Uniminin\n"
 [ "$(whoami)" != "root" ] && exec sudo -- "$0" "$@"
 sleep 5s
@@ -367,10 +368,4 @@ apt-get -qq update && apt-get -qq dist-upgrade
 printf "Done installing all the Dependencies & Softwares!\nExecute: ~/.dropbox-dist/dropboxd to enable Dropbox\nIf you want to enable fish shell you need to execute: chsh -s /usr/bin/fish"
 
 echo "Done Installing All the Softwares and dependencies! Enjoy Your Ubuntu OS!"
-
-printf "\n\nDo you like my auto Installer? [y/n]: "
-read q
-if [ "$q" = "y" ]; then
-	printf "\n\nWell... It's just a fake message but Thanks! You can use your ubuntu OS now.\n\nAlright! See you later in the next Installation!\n\n"
-fi
 
