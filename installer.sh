@@ -2,9 +2,9 @@
 clear
 
 # THIS SCRIPT IS ORIGINALLY FROM uniminin #
-printf "This installer is simplistic as its just something I put together so I could easily Install things once I reinstall ubntu for testing etc.\n\t- Uniminin\n"
+printf "I've made this so I could easily Install things once I reinstall ubuntu for testing.\n\t- Uniminin\n"
 [ "$(whoami)" != "root" ] && exec sudo -- "$0" "$@"
-sleep 5s
+sleep 4s
 
 echo "Updating/Upgrading System..."
 sudo apt-get update && sudo apt-get upgrade -y
