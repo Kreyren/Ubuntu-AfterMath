@@ -18,6 +18,8 @@ It's simple. First of all, you need to download it by either downloading it from
 
 After you do this, copy, paste and run the command: `chmod +x installer.sh && ./installer.sh`, and it will take you into the install process! Remember to be in root directory first. Before copything and pasting these commands please be in root dir by `sudo -i`.
 
+python3 script process: `wget https://raw.githubusercontent.com/Uniminin/Ubuntu-AfterMath/master/installer.py` and then `python3 installer.py`
+
 # Features
 
 - A configurable shell script for applying default settings and installing necessary software
