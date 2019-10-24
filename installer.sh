@@ -1,22 +1,34 @@
+# QA: Why not POSIX sh?
 #!/bin/bash
+# QA: Why?
 clear
 
+# QA: These should be under shabang
 # THIS SCRIPT IS ORIGINALLY FROM uniminin #
+# QA: Wrong use of printf -- printf <format> <message>
 printf "I've made this so I could easily Install things once I reinstall ubuntu for testing.\n\t- Uniminin\n"
+# QA: Check for id -u instead of name to avoid logic on user named root.
 [ "$(whoami)" != "root" ] && exec sudo -- "$0" "$@"
 sleep 4s
 
+# QA: printf or echo? Make up your mind..
 echo "Updating/Upgrading System..."
+# QA: You are invoking sudo above so what is the point of it here?
+# QA: What if upgrade fails? Sanitization needed
 sudo apt-get update && sudo apt-get upgrade -y
+# QA: Why do you update twice?
 sudo apt-get update
 
 # Upgrade installed packages to latest
 echo -e "\nRunning a package upgrade...\n"
+# QA: Sanitization?
 apt-get -qq update && apt-get -qq dist-upgrade
 
 
 echo "Installing Ubuntu Restricted Extras..."
+# QA: Sanitization?
 sudo apt-get install -y -qq ubuntu-restricted-extras
+# QA: Why update again?
 sudo apt-get update
 
 echo "Installing Flatpak and it's dependencies..."
@@ -48,10 +60,12 @@ echo "Installing Extra Software..."
 
 cd ~
 wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
+# QA: Sanitization?
 sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
 sudo apt-get update
 sudo apt-get isntall -qq -y atom 
 
+# QA: Sanitization?
 cd /tmp
 wget -O /tmp/discord.deb "https://discordapp.com/api/download?platform=linux&format=deb"
 sudo dpkg -i /tmp/discord.deb 
@@ -96,6 +110,8 @@ sudo apt-get update
 sudo apt-get install -y -qq uget
 
 cd /tmp
+# QA: Sanitization?
+# QA: Caching?
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i ./google-chrome-stable_current_amd64.deb
 sudo apt-get update
@@ -157,6 +173,7 @@ sudo apt-get install -y -qq git-core
 
 echo "Installing MongoDB"
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4
+# QA: Sanitization?
 echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list
 sudo apt-get update
 sudo apt-get install -y mongodb-org
@@ -172,6 +189,7 @@ sudo apt-get install -y -qq php5-mysql
 sudo ln -sf /lib/i386-linux-gnu/libudev.so.1 /lib/i386-linux-gnu/libudev.so.0
 sudo apt-get install -y -qq libmysql-ruby libmysqlclient-dev
 
+# QA: Sanitization?
 echo "Installing phpmyadmin"
 cd php/
 wget https://github.com/luizpicolo/exemplos/raw/master/phpMyAdmin.tar.gz
@@ -190,8 +208,10 @@ sudo apt-get install -y -qq y-ppa-manager
 
 sudo apt install -y -qq gnupg2
 gpg2 --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+# QA: Why are you escaping 'c'?
 \curl -L https://get.rvm.io | bash -s stable
 source ~/.rvm/scripts/rvm
+# QA: No need for bash format
 echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"' >> ~/.bashrc
 source ~/.bashrc
 rvm install -y -qq 2.0.0 --autolibs=packages
@@ -216,6 +236,7 @@ sudo mv images_human.zip images_human.zip.bkp
 sudo mv images_flat.zip images_human.zip
 
 echo "Removing DSL"
+# QA: Autoremove removes everything that is not used by the system.. Why are you trying to cherrypick?
 sudo apt-get autoremove unity-lens-shopping -y
 sudo apt-get autoremove unity-lens-music -y
 sudo apt-get autoremove unity-lens-photos -y
@@ -242,6 +263,8 @@ echo "Installing Ubuntu Make"
 sudo add-apt-repository -y ppa:ubuntu-desktop/ubuntu-make
 sudo apt-get update
 sudo apt-get install -y -qq ubuntu-make
+
+# QA: I gave up here
 
 echo "Installing popcorn time"
 cd /opt/
